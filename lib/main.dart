@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return DecoratedBox(
       decoration: const BoxDecoration(
         image: DecorationImage(
-          image: AssetImage("/images/bg_splash.jpg"),
+          image: AssetImage("assets/images/bg_splash.jpg"),
           fit: BoxFit.cover,
         ),
       ),
@@ -26,6 +26,7 @@ class MyApp extends StatelessWidget {
           appBar: AppBar(
             title: const Text(
               'Before & After App',
+              style: TextStyle(color: Color.fromARGB(255, 252, 252, 252)),
             ),
             backgroundColor: Colors.transparent,
           ),
