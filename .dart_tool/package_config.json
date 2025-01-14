@@ -206,13 +206,13 @@
       "languageVersion": "3.4"
     },
     {
-      "name": "myapp",
+      "name": "beforeafterapp",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "3.6"
     }
   ],
-  "generated": "2025-01-13T20:48:54.413279Z",
+  "generated": "2025-01-13T23:03:45.274500Z",
   "generator": "pub",
   "generatorVersion": "3.6.0-149.3.beta",
   "flutterRoot": "file:///home/user/flutter",
