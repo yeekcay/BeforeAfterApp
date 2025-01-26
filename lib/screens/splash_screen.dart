@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'dart:async';
 
-import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
+import '/screens/list_tile2.dart';
 //import 'package:shop_app/screens/home/home_screen.dart';
-import '/screens/home_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -17,44 +14,128 @@ class _SplashScreenState extends State<SplashScreen> {
   int currentPage = 0;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
+  return MaterialApp(
+    debugShowCheckedModeBanner: false,
+      title: 'Welcome to Flutter',
+      home: Container(
+        decoration: const BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("assets/images/bg_animate.gif"), fit: BoxFit.cover)),
+        child: Scaffold(
+      backgroundColor: Colors.transparent,
+      body:
+       Column(
         mainAxisSize: MainAxisSize.max,
         children: [
-          Expanded(
-            flex: 5,
-            child: Lottie.asset(
-              "assets/animations/BeforeAfterAnimation.json",
+      //     Container(
+            
+      //       decoration: new BoxDecoration(
+      // image: new DecorationImage(
+      //   image: new AssetImage("assets/images/bg_splash.jpg"),
+      //   fit: BoxFit.fill,
+          
+      //     ),
+      //       ),
+      //     ),
+          // Expanded(
+            
+
+          //  child: Image.asset("assets/images/logoanimate.gif",
+          //  width: 200,
+          //  alignment: Alignment.topRight,
+           
+           
+          //  ),
+        // fit: BoxFit.fill,
+        Container(
+            child:  Image.asset("assets/images/logoanimate.gif",
               // Can add other properties on how you would like the anim to display
 
               fit: BoxFit.contain,
-              width: 900,
-              height: 900,
-              repeat: false,
+              width: 700,
+              height: 700,
             ),
           ),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.push(
+
+ ElevatedButton(
+          child: Text('Sign in/Sign up'),
+           onPressed: () {
+            Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const HomeScreenPage()),
+                MaterialPageRoute(builder: (context) => const CustomListItemApp()),
               );
-            },
-            style: ElevatedButton.styleFrom(
-              elevation: 0,
-              backgroundColor: const Color.fromARGB(255, 255, 73, 67),
-              foregroundColor: Colors.white,
-              minimumSize: const Size(35, 48),
-              shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(12)),
-              ),
+
+           },
+          style: ElevatedButton.styleFrom(
+           backgroundColor:Colors.white, // set the background color
+           foregroundColor: Colors.black,
+          //  Color disabledForegroundColor,
+           shadowColor: Colors.grey,
+          //  double elevation,
+          //  TextStyle textStyle,
+          //  EdgeInsetsGeometry padding,
+         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                textStyle: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold),
+),
+
+          //  BorderSide side,
+          //  OutlinedBorder shape,
+          //  MouseCursor enabledMouseCursor,
+          //  MouseCursor disabledMouseCursor,
+          //  VisualDensity visualDensity,
+          //  MaterialTapTargetSize tapTargetSize,
+          //  Duration animationDuration,
+          //  bool enableFeedback
+     ),
+         
+      Container(
+        alignment: Alignment.bottomRight,
+         margin:
+        // const  EdgeInsets.symmetric(vertical: 10,),
+        const EdgeInsets.only(
+      // left: 20,
+       top: 10,
+       right: 10,
+      // bottom: 660,
+    ),
+            child:  Image.asset("assets/images/maglev.png",
+              // Can add other properties on how you would like the anim to display
+
+              fit: BoxFit.contain,
+              width: 110,
+              height: 110,
             ),
-            child: const Text("Continue"),
           ),
-          const Spacer(),
+
+
+    // TextButton.icon(
+    //           onPressed: () {
+    //           Navigator.push(
+    //             context,
+    //             MaterialPageRoute(builder: (context) => const CustomListItemApp()),
+    //           );
+    //         },
+    //           icon: const Text("Sign Up/Sign In",
+    //           style: TextStyle(
+    //            color: Colors.white,
+    //             fontSize: 25,
+
+    //           ),
+    //           ),
+    //           label: const Icon(
+    //             Icons.arrow_forward_ios,
+    //             size: 50,
+    //             color: Colors.white,
+    //           ),
+    //         ),
+          // const Spacer(),
         ],
       ),
-    );
+    ),
+      ),
+  );
   }
 }
 

@@ -2,8 +2,13 @@ import 'package:flutter/material.dart';
 import '/screens/splash_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const MaterialApp(
+  home: SplashScreen()
+
+
+  ));
 }
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -13,7 +18,7 @@ class MyApp extends StatelessWidget {
     return DecoratedBox(
       decoration: const BoxDecoration(
         image: DecorationImage(
-          image: AssetImage("assets/images/bg_splash.jpg"),
+          image: AssetImage("assets/images/bg_splash2.png"),
           fit: BoxFit.cover,
         ),
       ),
