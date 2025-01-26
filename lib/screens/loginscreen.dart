@@ -6,6 +6,9 @@ import '/utils/animations.dart';
 
 import '../data/bg_data.dart';
 import '../utils/text_utils.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+final Uri _url = Uri.parse('https://flutter.dev');
 
 void main(){
   WidgetsFlutterBinding.ensureInitialized();
@@ -37,7 +40,25 @@ class _LoginScreenState extends State<LoginScreen> {
   bool showOption=false;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return PopScope(
+      
+      canPop: false,
+      onPopInvoked: (didPop) async {
+        if (didPop) {
+          return;
+        }
+        final NavigatorState navigator = Navigator.of(context);
+        final bool? shouldPop = await _showBackDialog(context);
+        if (shouldPop ?? false) {
+          navigator.pop();
+        }
+      },
+
+
+
+
+
+    child: Scaffold(
       floatingActionButton: Container(
         margin:
         // const  EdgeInsets.symmetric(vertical: 10,),
@@ -127,7 +148,7 @@ class _LoginScreenState extends State<LoginScreen> {
       body: Container(
           height: double.infinity,
           width: double.infinity,
-        decoration:  BoxDecoration(
+        decoration:  const BoxDecoration(
           image: DecorationImage(
             image: AssetImage("assets/images/bg_animate.gif"),fit: BoxFit.cover
           ),
@@ -194,6 +215,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 border: Border(bottom: BorderSide(color: Colors.white))
             ),
             child:TextFormField(
+            obscureText: true, 
               style: const TextStyle(color: Colors.white),
               decoration:const  InputDecoration(
                 suffixIcon: Icon(Icons.lock,color: Colors.white,),
@@ -201,7 +223,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 border: InputBorder.none,),
             ),
           ),
-          const   Spacer(),
+          const   Spacer(flex: 5),
           Row(
             children: [
               Container(
@@ -210,9 +232,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 color: Colors.white,
               ),
              const  SizedBox(width: 10,),
-              Expanded(child: TextUtil(text: "Remember Me , FORGOT PASSWORD",size: 12,weight: true,))
+              Expanded(child: TextUtil(text: "Remember Me",size: 12,weight: true,))
             ],
-          ), const   Spacer(),
+          ), const   Spacer(flex: 5),
           Container(
             height: 40,
             width: double.infinity,
@@ -223,8 +245,24 @@ class _LoginScreenState extends State<LoginScreen> {
             alignment: Alignment.center,
             child: TextUtil(text: "Log In",color: Colors.black,),
           ),
-       const   Spacer(),
-          Center(child: TextUtil(text: "Don't have an account REGISTER",size: 12,weight: true,)),
+       const   Spacer(flex: 7),
+        Container(
+            height: 40,
+            width: double.infinity,
+            decoration:  BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(30)
+            ),
+            alignment: Alignment.center,
+            child: TextUtil(text: "Register",color: Colors.black,),
+          ),
+           const   Spacer(flex: 5),
+          Center(
+            child: InkWell(
+             child: TextUtil(text: "Forgot your Password?",size: 12,weight: true,),
+             onTap:  _launchUrl,
+             ),
+          ),
           const   Spacer(),
 
 
@@ -239,6 +277,40 @@ class _LoginScreenState extends State<LoginScreen> {
 
 
 
-       );
+       ),
+    );
+  }
+  }
+   Future<bool?> _showBackDialog(BuildContext context) {
+    return showDialog<bool>(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text("Exit"),
+          content: const Text(
+            "Are you sure?",
+          ),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(false);
+              },
+              child: const Text("No"),
+            ),
+            TextButton(
+              onPressed: () {
+                 SystemNavigator.pop();
+              },
+              child: const Text("Yes"),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+Future<void> _launchUrl() async {
+  if (!await launchUrl(_url)) {
+    throw Exception('Could not launch $_url');
   }
 }

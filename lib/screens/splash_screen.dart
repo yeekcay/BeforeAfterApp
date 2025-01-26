@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '/screens/list_tile2.dart';
+import '/screens/loginscreen.dart';
 //import 'package:shop_app/screens/home/home_screen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -58,11 +58,10 @@ class _SplashScreenState extends State<SplashScreen> {
           ),
 
  ElevatedButton(
-          child: Text('Sign in/Sign up'),
-           onPressed: () {
+          onPressed: () {
             Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const CustomListItemApp()),
+                MaterialPageRoute(builder: (context) => const LoginScreen()),
               );
 
            },
@@ -74,11 +73,12 @@ class _SplashScreenState extends State<SplashScreen> {
           //  double elevation,
           //  TextStyle textStyle,
           //  EdgeInsetsGeometry padding,
-         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                textStyle: TextStyle(
+         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                textStyle: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold),
 ),
+          child: Text('Sign in/Sign up'),
 
           //  BorderSide side,
           //  OutlinedBorder shape,

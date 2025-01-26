@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 /// Flutter code sample for custom list items.
 
-void main() => runApp(const CustomListItemApp());
+void main() => runApp(const homescreen());
 
-class CustomListItemApp extends StatelessWidget {
-  const CustomListItemApp({super.key});
+class homescreen extends StatelessWidget {
+  const homescreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -151,10 +151,10 @@ class CustomListItemExample extends StatelessWidget {
         
         child: Scaffold(
            backgroundColor: Colors.transparent,
-      appBar: AppBar(
-        elevation: 5,
-        title: const Text('Clinics Offers'),
-        ),
+      // appBar: AppBar(
+      //   elevation: 5,
+      //   title: const Text('Clinics Offers'),
+      //   ),
       body: ListView(
         padding: const EdgeInsets.all(2.0),
         children:
@@ -258,7 +258,7 @@ class CustomListItemExample extends StatelessWidget {
               decoration: const BoxDecoration(
 
                             image: DecorationImage(
-                image: const AssetImage("assets/images/este.jpg"), 
+                image: AssetImage("assets/images/este.jpg"), 
                   fit: BoxFit.fitWidth,
                   alignment: Alignment.topLeft,
                   
@@ -303,7 +303,7 @@ class CustomListItemExample extends StatelessWidget {
               decoration: const BoxDecoration(
 
                             image: DecorationImage(
-                image: const AssetImage("assets/images/beyou.jpg"), 
+                image: AssetImage("assets/images/beyou.jpg"), 
                   fit: BoxFit.fitWidth,
                   alignment: Alignment.topLeft,
                   
@@ -348,7 +348,7 @@ class CustomListItemExample extends StatelessWidget {
               decoration: const BoxDecoration(
 
                             image: DecorationImage(
-                image: const AssetImage("assets/images/FmcMedical.jpg"), 
+                image: AssetImage("assets/images/FmcMedical.jpg"), 
                   fit: BoxFit.fitWidth,
                   alignment: Alignment.topLeft,
                   
@@ -394,7 +394,7 @@ class CustomListItemExample extends StatelessWidget {
               decoration: const BoxDecoration(
 
                             image: DecorationImage(
-                image: const AssetImage("assets/images/charisma.jpg"), 
+                image: AssetImage("assets/images/charisma.jpg"), 
                   fit: BoxFit.fitWidth,
                   alignment: Alignment.topLeft,
                   
@@ -440,7 +440,7 @@ class CustomListItemExample extends StatelessWidget {
               decoration: const BoxDecoration(
 
                             image: DecorationImage(
-                image: const AssetImage("assets/images/7dental.png"), 
+                image: AssetImage("assets/images/7dental.png"), 
                   fit: BoxFit.fitWidth,
                   alignment: Alignment.topLeft,
                   
@@ -486,7 +486,7 @@ class CustomListItemExample extends StatelessWidget {
               decoration: const BoxDecoration(
 
                             image: DecorationImage(
-                image: const AssetImage("assets/images/ziedas.jpg"), 
+                image: AssetImage("assets/images/ziedas.jpg"), 
                   fit: BoxFit.fitWidth,
                   alignment: Alignment.topLeft,
                   
@@ -532,7 +532,7 @@ class CustomListItemExample extends StatelessWidget {
               decoration: const BoxDecoration(
 
                             image: DecorationImage(
-                image: const AssetImage("assets/images/ziedas.jpg"), 
+                image: AssetImage("assets/images/ziedas.jpg"), 
                   fit: BoxFit.fitWidth,
                   alignment: Alignment.topLeft,
                   
@@ -578,7 +578,7 @@ class CustomListItemExample extends StatelessWidget {
               decoration: const BoxDecoration(
 
                             image: DecorationImage(
-                image: const AssetImage("assets/images/ziedas.jpg"), 
+                image: AssetImage("assets/images/ziedas.jpg"), 
                   fit: BoxFit.fitWidth,
                   alignment: Alignment.topLeft,
                   
@@ -624,7 +624,7 @@ class CustomListItemExample extends StatelessWidget {
               decoration: const BoxDecoration(
 
                             image: DecorationImage(
-                image: const AssetImage("assets/images/ziedas.jpg"), 
+                image: AssetImage("assets/images/ziedas.jpg"), 
                   fit: BoxFit.fitWidth,
                   alignment: Alignment.topLeft,
                   
@@ -670,7 +670,7 @@ class CustomListItemExample extends StatelessWidget {
               decoration: const BoxDecoration(
 
                             image: DecorationImage(
-                image: const AssetImage("assets/images/ziedas.jpg"), 
+                image: AssetImage("assets/images/ziedas.jpg"), 
                   fit: BoxFit.fitWidth,
                   alignment: Alignment.topLeft,
                   
