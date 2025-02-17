@@ -7,12 +7,12 @@ import 'package:url_launcher/url_launcher.dart';
 
 final Uri _url = Uri.parse('https://flutter.dev');
 
-void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then((_) {
-    runApp(const MyApp());
-  });
-}
+// void main() {
+//   WidgetsFlutterBinding.ensureInitialized();
+//   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then((_) {
+//     runApp(const MyApp());
+//   });
+// }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginScreen(),
+      home: homescreen(),
     );
   }
 }

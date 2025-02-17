@@ -1,17 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'homescreen.dart';
 
-void main() => runApp(const Directionality(
-      textDirection: TextDirection.ltr,
-      child: DetailsList(),
-    ));
+// void main() => runApp(const Directionality(
+//       textDirection: TextDirection.ltr,
+//       child: DetailsList(),
+//     ));
 
 class DetailsList extends StatelessWidget {
   const DetailsList({super.key});
 
   @override
   Widget build(BuildContext context) {
+    textDirection: TextDirection.ltr;
+// return PopScope(
+//       canPop: false,
+//       onPopInvoked: (didPop) {
+//         if (didPop) {
+//           Navigator.push(
+//                               context,
+//                               MaterialPageRoute(builder: (context) => const homescreen()));
+//         }
+
+       
+//       },
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Clinic Offers',
@@ -112,7 +125,7 @@ class DetailsList extends StatelessWidget {
                             borderRadius: BorderRadius.circular(8.0),
                             image: DecorationImage(
                               fit: BoxFit.cover,
-                              image: NetworkImage(item.imageUrl),
+                             image: item.image,
                             ),
                           ),
                         ),
@@ -125,7 +138,7 @@ class DetailsList extends StatelessWidget {
           ),
         ),
       ),
-    );
+     );
   }
 
   Widget _buildWhatsAppButton() {
@@ -133,7 +146,7 @@ class DetailsList extends StatelessWidget {
       mini: true,
       backgroundColor: Colors.green.shade800,
       onPressed: () async {
-        const url = "https://wa.me/+201003806255/?text=Hello";
+        const url = "https://wa.me/+971589338680/?text=Hello";
         final Uri uri = Uri.parse(url);
         await launchUrl(uri);
       },
@@ -144,7 +157,7 @@ class DetailsList extends StatelessWidget {
   Widget _buildOrderNowButton() {
     return TextButton(
       onPressed: ()  async {
-        const url = "https://wa.me/+201003806255/?text=Hello";
+        const url = "https://wa.me/+971589338680/?text=Hello";
         final Uri uri = Uri.parse(url);
         await launchUrl(uri);
       },
@@ -159,13 +172,13 @@ class DetailsList extends StatelessWidget {
 
 class Article {
   final String title;
-  final String imageUrl;
+  final AssetImage image;
   final String author;
   final String postedOn;
 
   Article({
     required this.title,
-    required this.imageUrl,
+    required this.image,
     required this.author,
     required this.postedOn,
   });
@@ -175,43 +188,43 @@ final List<Article> _articles = [
   Article(
     title: "Anti-Aging Whitening Cream SPF 50+",
     author: "Naturally No.1",
-    imageUrl: "https://i.ibb.co/pjsFW2W7/product1.jpg",
+    image: const AssetImage("./assets/images/products/product1.jpeg"),
     postedOn: "300 AED",
   ),
   Article(
     title: "Anti-Aging Exfoliant",
-    imageUrl: "https://i.ibb.co/VcfZgdYw/product2.jpg",
+    image: const AssetImage("./assets/images/products/product2.jpeg"),
     author: "Naturally No.1",
     postedOn: "200 AED",
   ),
   Article(
     title: "Anti-Aging Day Cream SPF 50+",
     author: "Naturally No.1",
-    imageUrl: "https://i.ibb.co/d4D2JPHW/product3.jpg",
+    image: const AssetImage("./assets/images/products/product3.jpeg"),
     postedOn: "250 AED",
   ),
   Article(
     title: "Hair Elixir",
     author: "Naturally No.1",
-    imageUrl: "https://i.ibb.co/6R8WpHCq/product4.jpg",
+    image: const AssetImage("./assets/images/products/product4.jpeg"),
     postedOn: "200 AED",
   ),
   Article(
     title: "Facial Toner",
     author: "Naturally No.1",
-    imageUrl: "https://i.ibb.co/ynmc0Dby/product5.jpg",
+    image: const AssetImage("./assets/images/products/product5.jpeg"),
     postedOn: "150 AED",
   ),
   Article(
     title: "Anti Aging Night Cream",
     author: "Naturally No.1",
-    imageUrl: "https://i.ibb.co/zT5dPcy7/product6.jpg",
+    image: const AssetImage("./assets/images/products//product6.jpg"),
     postedOn: "100 AED",
   ),
   Article(
     title: "Anti Aging Under-eye Cream",
     author: "Naturally NO.1",
-    imageUrl: "https://i.ibb.co/yc5G9wpH/product7.jpg",
+    image:  const AssetImage("./assets/images/products/product7.jpeg"),
     postedOn: "200 AED",
   ),
 ];

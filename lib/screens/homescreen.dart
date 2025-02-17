@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:ui';
+// import 'package:beforeafterapp/screens/loginscreen.dart';
 import 'package:flutter/material.dart';
 import 'productdetailslist.dart'; // Import the new file
 import 'servicesdetailslist.dart';
@@ -7,13 +8,22 @@ import 'package:url_launcher/url_launcher.dart';
 
 /// Flutter code sample for custom list items.
 
-void main() => runApp(const homescreen());
+// void main() => runApp(const homescreen());
 
 class homescreen extends StatelessWidget {
   const homescreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    // return PopScope(
+    //   canPop: false,
+    //   onPopInvoked: (didPop) {
+    //     if (didPop) {
+    //       Navigator.push(
+    //                           context,
+    //                           MaterialPageRoute(builder: (context) => const LoginScreen()));
+    //     }
+    //   },
     return MaterialApp(
       theme: ThemeData(useMaterial3: true),
       home: const CustomListItemExample(),
@@ -62,27 +72,31 @@ class _ArticleDescription extends StatelessWidget {
             color: Colors.white,
           ),
         ),
-        Row( children: [
-        Text(
-          treatmentprice,
-          style: const TextStyle(
-            fontSize: 15.0,
-            overflow: TextOverflow.clip,
-            color: Colors.white,
-            backgroundColor: Colors.deepOrange,
-          ),
-        ),
-           const Padding(padding: EdgeInsets.only(left: 2.0)),
-        Text(
-          oldprice,
-          style: const TextStyle(
-             fontSize: 15.0,
-            overflow: TextOverflow.clip,
-            color: Colors.white,
-            backgroundColor: Colors.transparent,
-            decoration: TextDecoration.lineThrough, decorationColor: Colors.red, decorationThickness: 3.0)
+        Row(
+          children: [
+            Text(
+              treatmentprice,
+              style: const TextStyle(
+                fontSize: 15.0,
+                overflow: TextOverflow.clip,
+                color: Colors.white,
+                backgroundColor: Colors.deepOrange,
+              ),
             ),
-        ],
+            const Padding(padding: EdgeInsets.only(left: 2.0)),
+            Text(
+              oldprice,
+              style: const TextStyle(
+                fontSize: 15.0,
+                overflow: TextOverflow.clip,
+                color: Colors.white,
+                backgroundColor: Colors.transparent,
+                decoration: TextDecoration.lineThrough,
+                decorationColor: Colors.red,
+                decorationThickness: 3.0,
+              ),
+            ),
+          ],
         ),
         Flexible(
           child: Text(
@@ -124,15 +138,14 @@ class OffersList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 8.0), // Slightly reduce right padding
-      child: Flexible(
       child: Container(
         height: 138,
         decoration: const BoxDecoration(
-            borderRadius: BorderRadius.all(
-                      Radius.circular(10),
-                    ),
+          borderRadius: BorderRadius.all(
+            Radius.circular(10),
+          ),
           image: DecorationImage(
-            image: AssetImage("assets/images/bg_list2.jpg"),
+            image: AssetImage("./assets/images/bg_list2.jpg"),
             fit: BoxFit.cover,
           ),
         ),
@@ -153,58 +166,22 @@ class OffersList extends StatelessWidget {
                   ),
                 ),
               ),
-                Flexible(
+              Flexible(
                 child: Padding(
-                padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
-                // height: 100,
-                child: Column(
-                  // mainAxisAlignment: MainAxisAlignment.spaceBetween, // Add space between buttons
-                  children: [
-                    TextButton.icon(
-                      onPressed: () async {
-                        const url = "https://wa.me/+201003806255/?text=Hello";
-                        final Uri uri = Uri.parse(url);
-                        await launchUrl(uri);
-                          },
-                      icon: const Text(
-                        "Book Now",
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
-                      ),
-                      label: const Icon(
-                        Icons.arrow_forward_ios,
-                        size: 30,
-                        color: Colors.white,
-                      ),
-                    ),
-                    TextButton.icon(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => const ServiceDetailsList()),
-                        );
-                      },
-                      icon: const Text(
-                        "More Details",
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
-                      ),
-                      label: const Icon(
-                        Icons.info_outline,
-                        size: 20,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ],
-                ),
+                  padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
+                  // height: 100,
+                  child: Column(
+                    // mainAxisAlignment: MainAxisAlignment.spaceBetween, // Add space between buttons
+                    children: [
+                      button,
+                      buttondetails,
+                    ],
+                  ),
                 ),
               ),
             ],
           ),
         ),
-      ),
       ),
     );
   }
@@ -279,7 +256,7 @@ class _CustomListItemExampleState extends State<CustomListItemExample> {
       home: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("assets/images/bg_splash2.png"),
+            image: AssetImage("./assets/images/bg_splash2.png"),
             fit: BoxFit.cover,
           ),
         ),
@@ -320,7 +297,7 @@ class _CustomListItemExampleState extends State<CustomListItemExample> {
                       Padding(
                         padding: const EdgeInsets.all(16.0), // Add padding around the image
                         child: Image.asset(
-                          "assets/images/before_logo.png",
+                          "./assets/images/before_logo.png",
                           alignment: AlignmentDirectional.center,
                           fit: BoxFit.contain,
                           width: 180,
@@ -330,7 +307,7 @@ class _CustomListItemExampleState extends State<CustomListItemExample> {
                       Padding(
                         padding: const EdgeInsets.all(16.0), // Add padding around the image
                         child: Image.asset(
-                          "assets/images/specialoffer.png",
+                          "./assets/images/specialoffer.png",
                           alignment: AlignmentDirectional.center,
                           fit: BoxFit.contain,
                           width: 180,
@@ -340,7 +317,7 @@ class _CustomListItemExampleState extends State<CustomListItemExample> {
                       Padding(
                         padding: const EdgeInsets.all(16.0), // Add padding around the image
                         child: Image.asset(
-                          "assets/images/flashsale.png",
+                          "./assets/images/flashsale.png",
                           alignment: AlignmentDirectional.center,
                           fit: BoxFit.contain,
                           width: 180,
@@ -396,7 +373,7 @@ class _CustomListItemExampleState extends State<CustomListItemExample> {
                               Radius.circular(10),
                             ),
                             // image: DecorationImage(
-                            //   image: AssetImage("assets/images/bg_list2.jpg"),
+                            //   image: AssetImage("./assets/images/bg_list2.jpg"),
                             //   fit: BoxFit.cover,
                             // ),
                           ),
@@ -407,7 +384,7 @@ class _CustomListItemExampleState extends State<CustomListItemExample> {
                                 padding: const EdgeInsets.symmetric(),
                                 decoration: const BoxDecoration(
                                   image: DecorationImage(
-                                    image: AssetImage("assets/images/bg_list2.jpg"),
+                                    image: AssetImage("./assets/images/bg_list2.jpg"),
                                     fit: BoxFit.cover,
                                     alignment: Alignment.bottomCenter,
                                   ),
@@ -425,7 +402,7 @@ class _CustomListItemExampleState extends State<CustomListItemExample> {
                                           Radius.circular(10),
                                         ),
                                         image: DecorationImage(
-                                          image: AssetImage("assets/images/healthavenueplus.png"),
+                                          image: AssetImage("./assets/images/healthavenueplus.jpg"),
                                           fit: BoxFit.contain, // Ensure the whole image is showing
                                           alignment: Alignment.center, // Center the image
                                         ),
@@ -434,13 +411,13 @@ class _CustomListItemExampleState extends State<CustomListItemExample> {
                                     Flexible(
                                       child: OffersList(
                                         button: TextButton.icon(
-                                          onPressed:() async {
-                        const url = "https://wa.me/+201003806255/?text=Hello";
-                        final Uri uri = Uri.parse(url);
-                        await launchUrl(uri);
-                          },
+                                          onPressed: () async {
+                                            const url = "https://wa.me/+971589338680/?text=Hello";
+                                            final Uri uri = Uri.parse(url);
+                                            await launchUrl(uri);
+                                          },
                                           icon: const Text(
-                                            "Buy Now",
+                                            "Book Now",
                                             style: TextStyle(
                                               color: Colors.white,
                                             ),
@@ -501,7 +478,7 @@ class _CustomListItemExampleState extends State<CustomListItemExample> {
                                           Radius.circular(10),
                                         ),
                                         image: DecorationImage(
-                                          image: AssetImage("assets/images/product1.jpeg"),
+                                          image: AssetImage("./assets/images/product1.jpeg"),
                                           fit: BoxFit.contain, // Ensure the whole image is showing
                                           alignment: Alignment.center, // Center the image
                                         ),
@@ -513,7 +490,7 @@ class _CustomListItemExampleState extends State<CustomListItemExample> {
                                           onPressed: () {
                                             Navigator.push(
                                               context,
-                                              MaterialPageRoute(builder: (context) => const ServiceDetailsList()),
+                                              MaterialPageRoute(builder: (context) => const DetailsList()),
                                             );
                                           },
                                           icon: const Text(
@@ -551,7 +528,7 @@ class _CustomListItemExampleState extends State<CustomListItemExample> {
                                           ),
                                           label: const Icon(
                                             Icons.info_outline,
-                                            size: 30,
+                                            size: 27,
                                             color: Colors.white,
                                           ),
                                         ),
@@ -577,7 +554,7 @@ class _CustomListItemExampleState extends State<CustomListItemExample> {
                                           Radius.circular(10),
                                         ),
                                         image: DecorationImage(
-                                          image: AssetImage("assets/images/products/product2.jpeg"),
+                                          image: AssetImage("./assets/images/products/product2.jpeg"),
                                           fit: BoxFit.contain, // Ensure the whole image is showing
                                           alignment: Alignment.center, // Center the image
                                         ),
@@ -616,7 +593,7 @@ class _CustomListItemExampleState extends State<CustomListItemExample> {
                                           onPressed: () {
                                             Navigator.push(
                                               context,
-                                              MaterialPageRoute(builder: (context) => const ServiceDetailsList()),
+                                              MaterialPageRoute(builder: (context) => const DetailsList()),
                                             );
                                           },
                                           icon: const Text(
@@ -627,7 +604,7 @@ class _CustomListItemExampleState extends State<CustomListItemExample> {
                                           ),
                                           label: const Icon(
                                             Icons.info_outline,
-                                            size: 30,
+                                            size: 27,
                                             color: Colors.white,
                                           ),
                                         ),
@@ -653,7 +630,7 @@ class _CustomListItemExampleState extends State<CustomListItemExample> {
                                           Radius.circular(10),
                                         ),
                                         image: DecorationImage(
-                                          image: AssetImage("assets/images/products/product3.jpeg"),
+                                          image: AssetImage("./assets/images/products/product3.jpeg"),
                                           fit: BoxFit.contain, // Ensure the whole image is showing
                                           alignment: Alignment.center, // Center the image
                                         ),
@@ -692,7 +669,7 @@ class _CustomListItemExampleState extends State<CustomListItemExample> {
                                           onPressed: () {
                                             Navigator.push(
                                               context,
-                                              MaterialPageRoute(builder: (context) => const ServiceDetailsList()),
+                                              MaterialPageRoute(builder: (context) => const DetailsList()),
                                             );
                                           },
                                           icon: const Text(
@@ -703,7 +680,7 @@ class _CustomListItemExampleState extends State<CustomListItemExample> {
                                           ),
                                           label: const Icon(
                                             Icons.info_outline,
-                                            size: 30,
+                                            size: 27,
                                             color: Colors.white,
                                           ),
                                         ),
@@ -729,7 +706,7 @@ class _CustomListItemExampleState extends State<CustomListItemExample> {
                                           Radius.circular(10),
                                         ),
                                         image: DecorationImage(
-                                          image: AssetImage("assets/images/products/product4.jpeg"),
+                                          image: AssetImage("./assets/images/products/product4.jpeg"),
                                           fit: BoxFit.contain, // Ensure the whole image is showing
                                           alignment: Alignment.center, // Center the image
                                         ),
@@ -768,7 +745,7 @@ class _CustomListItemExampleState extends State<CustomListItemExample> {
                                           onPressed: () {
                                             Navigator.push(
                                               context,
-                                              MaterialPageRoute(builder: (context) => const ServiceDetailsList()),
+                                              MaterialPageRoute(builder: (context) => const DetailsList()),
                                             );
                                           },
                                           icon: const Text(
@@ -779,7 +756,7 @@ class _CustomListItemExampleState extends State<CustomListItemExample> {
                                           ),
                                           label: const Icon(
                                             Icons.info_outline,
-                                            size: 30,
+                                            size: 27,
                                             color: Colors.white,
                                           ),
                                         ),
@@ -805,7 +782,7 @@ class _CustomListItemExampleState extends State<CustomListItemExample> {
                                           Radius.circular(10),
                                         ),
                                         image: DecorationImage(
-                                          image: AssetImage("assets/images/products/product5.jpeg"),
+                                          image: AssetImage("./assets/images/products/product5.jpeg"),
                                           fit: BoxFit.contain, // Ensure the whole image is showing
                                           alignment: Alignment.center, // Center the image
                                         ),
@@ -844,7 +821,7 @@ class _CustomListItemExampleState extends State<CustomListItemExample> {
                                           onPressed: () {
                                             Navigator.push(
                                               context,
-                                              MaterialPageRoute(builder: (context) => const ServiceDetailsList()),
+                                              MaterialPageRoute(builder: (context) => const DetailsList()),
                                             );
                                           },
                                           icon: const Text(
@@ -855,7 +832,7 @@ class _CustomListItemExampleState extends State<CustomListItemExample> {
                                           ),
                                           label: const Icon(
                                             Icons.info_outline,
-                                            size: 30,
+                                            size: 27,
                                             color: Colors.white,
                                           ),
                                         ),
@@ -881,7 +858,7 @@ class _CustomListItemExampleState extends State<CustomListItemExample> {
                                           Radius.circular(10),
                                         ),
                                         image: DecorationImage(
-                                          image: AssetImage("assets/images/products/product6.jpeg"),
+                                          image: AssetImage("./assets/images/products/product6.jpeg"),
                                           fit: BoxFit.contain, // Ensure the whole image is showing
                                           alignment: Alignment.center, // Center the image
                                         ),
@@ -920,7 +897,7 @@ class _CustomListItemExampleState extends State<CustomListItemExample> {
                                           onPressed: () {
                                             Navigator.push(
                                               context,
-                                              MaterialPageRoute(builder: (context) => const ServiceDetailsList()),
+                                              MaterialPageRoute(builder: (context) => const DetailsList()),
                                             );
                                           },
                                           icon: const Text(
@@ -931,7 +908,7 @@ class _CustomListItemExampleState extends State<CustomListItemExample> {
                                           ),
                                           label: const Icon(
                                             Icons.info_outline,
-                                            size: 30,
+                                            size: 27,
                                             color: Colors.white,
                                           ),
                                         ),
@@ -957,7 +934,7 @@ class _CustomListItemExampleState extends State<CustomListItemExample> {
                                           Radius.circular(10),
                                         ),
                                         image: DecorationImage(
-                                          image: AssetImage("assets/images/products/product7.jpeg"),
+                                          image: AssetImage("./assets/images/products/product7.jpeg"),
                                           fit: BoxFit.contain, // Ensure the whole image is showing
                                           alignment: Alignment.center, // Center the image
                                         ),
@@ -969,7 +946,7 @@ class _CustomListItemExampleState extends State<CustomListItemExample> {
                                           onPressed: () {
                                             Navigator.push(
                                               context,
-                                              MaterialPageRoute(builder: (context) => const DetailsList()),
+                                              MaterialPageRoute(builder: (context) => const ServiceDetailsList()),
                                             );
                                           },
                                           icon: const Text(
@@ -1007,7 +984,7 @@ class _CustomListItemExampleState extends State<CustomListItemExample> {
                                           ),
                                           label: const Icon(
                                             Icons.info_outline,
-                                            size: 30,
+                                            size: 27,
                                             color: Colors.white,
                                           ),
                                         ),
@@ -1016,158 +993,6 @@ class _CustomListItemExampleState extends State<CustomListItemExample> {
                                         treatmentprice: '287AED',
                                         oldprice: '319AED',
                                         treatmentType: 'Skin Treatment',
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 8.0), // Slightly reduce right padding
-                                child: Row(
-                                  children: [
-                                    Container(
-                                      width: 100, // Set a consistent width
-                                      height: 100, // Set a consistent height
-                                      decoration: const BoxDecoration(
-                                        borderRadius: BorderRadius.all(
-                                          Radius.circular(10),
-                                        ),
-                                        image: DecorationImage(
-                                          image: AssetImage("assets/images/product1.jpeg"),
-                                          fit: BoxFit.contain, // Ensure the whole image is showing
-                                          alignment: Alignment.center, // Center the image
-                                        ),
-                                      ),
-                                    ),
-                                    Flexible(
-                                      child: OffersList(
-                                        button: TextButton.icon(
-                                          onPressed: () {
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(builder: (context) => const ServiceDetailsList()),
-                                            );
-                                          },
-                                          icon: const Text(
-                                            "Buy Now",
-                                            style: TextStyle(
-                                              color: Colors.white,
-                                            ),
-                                          ),
-                                          label: const Icon(
-                                            Icons.arrow_forward_ios,
-                                            size: 30,
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                        textinfo: const Text(
-                                          "More Details",
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            decoration: TextDecoration.underline,
-                                            decorationStyle: TextDecorationStyle.double,
-                                          ),
-                                        ),
-                                        buttondetails: TextButton.icon(
-                                          onPressed: () {
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(builder: (context) => const ServiceDetailsList()),
-                                            );
-                                          },
-                                          icon: const Text(
-                                            "More Details",
-                                            style: TextStyle(
-                                              color: Colors.white,
-                                            ),
-                                          ),
-                                          label: const Icon(
-                                            Icons.info_outline,
-                                            size: 30,
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                        clinicname: 'Naturally No. 1',
-                                        treatmenttitle: 'Hair Serum',
-                                        treatmentprice: '300AED',
-                                        oldprice: '350 AED',
-                                        treatmentType: 'Hair Treatment',
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 8.0), // Slightly reduce right padding
-                                child: Row(
-                                  children: [
-                                    Container(
-                                      width: 100, // Set a consistent width
-                                      height: 100, // Set a consistent height
-                                      decoration: const BoxDecoration(
-                                        borderRadius: BorderRadius.all(
-                                          Radius.circular(10),
-                                        ),
-                                        image: DecorationImage(
-                                          image: AssetImage("assets/images/product1.jpeg"),
-                                          fit: BoxFit.contain, // Ensure the whole image is showing
-                                          alignment: Alignment.center, // Center the image
-                                        ),
-                                      ),
-                                    ),
-                                    Flexible(
-                                      child: OffersList(
-                                        button: TextButton.icon(
-                                          onPressed: () {
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(builder: (context) => const ServiceDetailsList()),
-                                            );
-                                          },
-                                          icon: const Text(
-                                            "Buy Now",
-                                            style: TextStyle(
-                                              color: Colors.white,
-                                            ),
-                                          ),
-                                          label: const Icon(
-                                            Icons.arrow_forward_ios,
-                                            size: 30,
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                        textinfo: const Text(
-                                          "More Details",
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            decoration: TextDecoration.underline,
-                                            decorationStyle: TextDecorationStyle.double,
-                                          ),
-                                        ),
-                                        buttondetails: TextButton.icon(
-                                          onPressed: () {
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(builder: (context) => const ServiceDetailsList()),
-                                            );
-                                          },
-                                          icon: const Text(
-                                            "More Details",
-                                            style: TextStyle(
-                                              color: Colors.white,
-                                            ),
-                                          ),
-                                          label: const Icon(
-                                            Icons.info_outline,
-                                            size: 30,
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                        clinicname: 'Naturally No. 1',
-                                        treatmenttitle: 'Hair Serum',
-                                        treatmentprice: '300AED',
-                                        oldprice: '350 AED',
-                                        treatmentType: 'Hair Treatment',
                                       ),
                                     ),
                                   ],
@@ -1185,7 +1010,7 @@ class _CustomListItemExampleState extends State<CustomListItemExample> {
                                           Radius.circular(10),
                                         ),
                                         image: DecorationImage(
-                                          image: AssetImage("assets/images/FmcMedical.jpg"),
+                                          image: AssetImage("./assets/images/FmcMedical.jpg"),
                                           fit: BoxFit.contain, // Ensure the whole image is showing
                                           alignment: Alignment.center, // Center the image
                                         ),
@@ -1195,10 +1020,10 @@ class _CustomListItemExampleState extends State<CustomListItemExample> {
                                       child: OffersList(
                                         button: TextButton.icon(
                                           onPressed: () async {
-                        const url = "https://wa.me/+201003806255/?text=Hello";
-                        final Uri uri = Uri.parse(url);
-                        await launchUrl(uri);
-                          },
+                                            const url = "https://wa.me/+971589338680/?text=Hello";
+                                            final Uri uri = Uri.parse(url);
+                                            await launchUrl(uri);
+                                          },
                                           icon: const Text(
                                             "Book Now",
                                             style: TextStyle(
@@ -1234,7 +1059,7 @@ class _CustomListItemExampleState extends State<CustomListItemExample> {
                                           ),
                                           label: const Icon(
                                             Icons.info_outline,
-                                            size: 30,
+                                            size: 27,
                                             color: Colors.white,
                                           ),
                                         ),
@@ -1260,7 +1085,7 @@ class _CustomListItemExampleState extends State<CustomListItemExample> {
                                           Radius.circular(10),
                                         ),
                                         image: DecorationImage(
-                                          image: AssetImage("assets/images/este.jpg"),
+                                          image: AssetImage("./assets/images/este.jpg"),
                                           fit: BoxFit.contain, // Ensure the whole image is showing
                                           alignment: Alignment.center, // Center the image
                                         ),
@@ -1270,10 +1095,10 @@ class _CustomListItemExampleState extends State<CustomListItemExample> {
                                       child: OffersList(
                                         button: TextButton.icon(
                                           onPressed: () async {
-                        const url = "https://wa.me/+201003806255/?text=Hello";
-                        final Uri uri = Uri.parse(url);
-                        await launchUrl(uri);
-                          },
+                                            const url = "https://wa.me/+971589338680/?text=Hello";
+                                            final Uri uri = Uri.parse(url);
+                                            await launchUrl(uri);
+                                          },
                                           icon: const Text(
                                             "Book Now",
                                             style: TextStyle(
@@ -1309,7 +1134,7 @@ class _CustomListItemExampleState extends State<CustomListItemExample> {
                                           ),
                                           label: const Icon(
                                             Icons.info_outline,
-                                            size: 30,
+                                            size: 27,
                                             color: Colors.white,
                                           ),
                                         ),
@@ -1335,7 +1160,7 @@ class _CustomListItemExampleState extends State<CustomListItemExample> {
                                           Radius.circular(10),
                                         ),
                                         image: DecorationImage(
-                                          image: AssetImage("assets/images/7dental.png"),
+                                          image: AssetImage("./assets/images/7dental.png"),
                                           fit: BoxFit.contain, // Ensure the whole image is showing
                                           alignment: Alignment.center, // Center the image
                                         ),
@@ -1345,10 +1170,10 @@ class _CustomListItemExampleState extends State<CustomListItemExample> {
                                       child: OffersList(
                                         button: TextButton.icon(
                                           onPressed: () async {
-                        const url = "https://wa.me/+201003806255/?text=Hello";
-                        final Uri uri = Uri.parse(url);
-                        await launchUrl(uri);
-                          },
+                                            const url = "https://wa.me/+971589338680/?text=Hello";
+                                            final Uri uri = Uri.parse(url);
+                                            await launchUrl(uri);
+                                          },
                                           icon: const Text(
                                             "Book Now",
                                             style: TextStyle(
@@ -1382,7 +1207,7 @@ class _CustomListItemExampleState extends State<CustomListItemExample> {
                                           ),
                                           label: const Icon(
                                             Icons.info_outline,
-                                            size: 30,
+                                            size: 27,
                                             color: Colors.white,
                                           ),
                                         ),
@@ -1396,444 +1221,6 @@ class _CustomListItemExampleState extends State<CustomListItemExample> {
                                   ],
                                 ),
                               ),
-                        //       Padding(
-                        //         padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
-                        //         child: Row(
-                        //           children: [
-                        //             Container(
-                        //               width: 100, // Set a consistent width
-                        //               height: 100, // Set a consistent height
-                        //               decoration: const BoxDecoration(
-                        //                 borderRadius: BorderRadius.all(
-                        //                   Radius.circular(10),
-                        //                 ),
-                        //                 image: DecorationImage(
-                        //                   image: AssetImage("assets/images/ziedas.jpg"),
-                        //                   fit: BoxFit.contain, // Ensure the whole image is showing
-                        //                   alignment: Alignment.center, // Center the image
-                        //                 ),
-                        //               ),
-                        //             ),
-                        //             Flexible(
-                        //               child: OffersList(
-                        //                 button: TextButton.icon(
-                        //                   onPressed: () async {
-                        // const url = "https://wa.me/+201003806255/?text=Hello";
-                        // final Uri uri = Uri.parse(url);
-                        // await launchUrl(uri);
-                        //   },
-                        //                   icon: const Text(
-                        //                     "Book Now",
-                        //                     style: TextStyle(
-                        //                       color: Colors.white,
-                        //                     ),
-                        //                   ),
-                        //                   label: const Icon(
-                        //                     Icons.arrow_forward_ios,
-                        //                     size: 30,
-                        //                     color: Colors.white,
-                        //                   ),
-                        //                 ),
-                        //                 textinfo: const Text(
-                        //                   "Free Hair Analysis",
-                        //                   style: TextStyle(
-                        //                     color: Colors.white,
-                        //                   ),
-                        //                 ),
-                        //                 buttondetails: TextButton.icon(
-                        //                   onPressed: () {
-                        //                     Navigator.push(
-                        //                       context,
-                        //                       MaterialPageRoute(builder: (context) => const ServiceDetailsList()),
-                        //                     );
-                        //                   },
-                        //                   icon: const Text(
-                        //                     "More Details",
-                        //                     style: TextStyle(
-                        //                       color: Colors.white,
-                        //                     ),
-                        //                   ),
-                        //                   label: const Icon(
-                        //                     Icons.info_outline,
-                        //                     size: 30,
-                        //                     color: Colors.white,
-                        //                   ),
-                        //                 ),
-                        //                 clinicname: 'Ziedas',
-                        //                 treatmenttitle: 'Package Offer!',
-                        //                 treatmentprice: '300AED',
-                        //                 oldprice: '400AED',
-                        //                 treatmentType: 'Dec 28',
-                        //               ),
-                        //             ),
-                        //           ],
-                        //         ),
-                        //       ),
-                        //       Padding(
-                        //         padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
-                        //         child: Row(
-                        //           children: [
-                        //             Container(
-                        //               width: 100, // Set a consistent width
-                        //               height: 100, // Set a consistent height
-                        //               decoration: const BoxDecoration(
-                        //                 borderRadius: BorderRadius.all(
-                        //                   Radius.circular(10),
-                        //                 ),
-                        //                 image: DecorationImage(
-                        //                   image: AssetImage("assets/images/ziedas.jpg"),
-                        //                   fit: BoxFit.contain, // Ensure the whole image is showing
-                        //                   alignment: Alignment.center, // Center the image
-                        //                 ),
-                        //               ),
-                        //             ),
-                        //             Flexible(
-                        //               child: OffersList(
-                        //                 button: TextButton.icon(
-                        //                   onPressed: () async {
-                        // const url = "https://wa.me/+201003806255/?text=Hello";
-                        // final Uri uri = Uri.parse(url);
-                        // await launchUrl(uri);
-                        //   },
-                        //                   icon: const Text(
-                        //                     "Book Now",
-                        //                     style: TextStyle(
-                        //                       color: Colors.white,
-                        //                     ),
-                        //                   ),
-                        //                   label: const Icon(
-                        //                     Icons.arrow_forward_ios,
-                        //                     size: 30,
-                        //                     color: Colors.white,
-                        //                   ),
-                        //                 ),
-                        //                 textinfo: const Text(
-                        //                   "Free Hair Analysis",
-                        //                   style: TextStyle(
-                        //                     color: Colors.white,
-                        //                   ),
-                        //                 ),
-                        //                 buttondetails: TextButton.icon(
-                        //                   onPressed: () {
-                        //                     Navigator.push(
-                        //                       context,
-                        //                       MaterialPageRoute(builder: (context) => const ServiceDetailsList()),
-                        //                     );
-                        //                   },
-                        //                   icon: const Text(
-                        //                     "More Details",
-                        //                     style: TextStyle(
-                        //                       color: Colors.white,
-                        //                     ),
-                        //                   ),
-                        //                   label: const Icon(
-                        //                     Icons.info_outline,
-                        //                     size: 30,
-                        //                     color: Colors.white,
-                        //                   ),
-                        //                 ),
-                        //                 clinicname: 'Ziedas',
-                        //                 treatmenttitle: 'Package Offer!',
-                        //                 treatmentprice: '300AED',
-                        //                 oldprice: '400AED',
-                        //                 treatmentType: 'Dec 28',
-                        //               ),
-                        //             ),
-                        //           ],
-                        //         ),
-                        //       ),
-                        //       Padding(
-                        //         padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
-                        //         child: Row(
-                        //           children: [
-                        //             Container(
-                        //               width: 100, // Set a consistent width
-                        //               height: 100, // Set a consistent height
-                        //               decoration: const BoxDecoration(
-                        //                 borderRadius: BorderRadius.all(
-                        //                   Radius.circular(10),
-                        //                 ),
-                        //                 image: DecorationImage(
-                        //                   image: AssetImage("assets/images/ziedas.jpg"),
-                        //                   fit: BoxFit.contain, // Ensure the whole image is showing
-                        //                   alignment: Alignment.center, // Center the image
-                        //                 ),
-                        //               ),
-                        //             ),
-                        //             Flexible(
-                        //               child: OffersList(
-                        //                 button: TextButton.icon(
-                        //                   onPressed:() async {
-                        // const url = "https://wa.me/+201003806255/?text=Hello";
-                        // final Uri uri = Uri.parse(url);
-                        // await launchUrl(uri);
-                        //   },
-                        //                   icon: const Text(
-                        //                     "Book Now",
-                        //                     style: TextStyle(
-                        //                       color: Colors.white,
-                        //                     ),
-                        //                   ),
-                        //                   label: const Icon(
-                        //                     Icons.arrow_forward_ios,
-                        //                     size: 30,
-                        //                     color: Colors.white,
-                        //                   ),
-                        //                 ),
-                        //                 textinfo: const Text(
-                        //                   "Free Hair Analysis",
-                        //                   style: TextStyle(
-                        //                     color: Colors.white,
-                        //                   ),
-                        //                 ),
-                        //                 buttondetails: TextButton.icon(
-                        //                   onPressed: () {
-                        //                     Navigator.push(
-                        //                       context,
-                        //                       MaterialPageRoute(builder: (context) => const ServiceDetailsList()),
-                        //                     );
-                        //                   },
-                        //                   icon: const Text(
-                        //                     "More Details",
-                        //                     style: TextStyle(
-                        //                       color: Colors.white,
-                        //                     ),
-                        //                   ),
-                        //                   label: const Icon(
-                        //                     Icons.info_outline,
-                        //                     size: 30,
-                        //                     color: Colors.white,
-                        //                   ),
-                        //                 ),
-                        //                 clinicname: 'Ziedas',
-                        //                 treatmenttitle: 'Package Offer!',
-                        //                 treatmentprice: '300AED',
-                        //                 oldprice: '400AED',
-                        //                 treatmentType: 'Dec 28',
-                        //               ),
-                        //             ),
-                        //           ],
-                        //         ),
-                        //       ),
-                        //       Padding(
-                        //         padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
-                        //         child: Row(
-                        //           children: [
-                        //             Container(
-                        //               width: 100, // Set a consistent width
-                        //               height: 100, // Set a consistent height
-                        //               decoration: const BoxDecoration(
-                        //                 borderRadius: BorderRadius.all(
-                        //                   Radius.circular(10),
-                        //                 ),
-                        //                 image: DecorationImage(
-                        //                   image: AssetImage("assets/images/ziedas.jpg"),
-                        //                   fit: BoxFit.contain, // Ensure the whole image is showing
-                        //                   alignment: Alignment.center, // Center the image
-                        //                 ),
-                        //               ),
-                        //             ),
-                        //             Flexible(
-                        //               child: OffersList(
-                        //                 button: TextButton.icon(
-                        //                   onPressed:() async {
-                        // const url = "https://wa.me/+201003806255/?text=Hello";
-                        // final Uri uri = Uri.parse(url);
-                        // await launchUrl(uri);
-                        //   },
-                        //                   icon: const Text(
-                        //                     "Book Now",
-                        //                     style: TextStyle(
-                        //                       color: Colors.white,
-                        //                     ),
-                        //                   ),
-                        //                   label: const Icon(
-                        //                     Icons.arrow_forward_ios,
-                        //                     size: 30,
-                        //                     color: Colors.white,
-                        //                   ),
-                        //                 ),
-                        //                 textinfo: const Text(
-                        //                   "Free Hair Analysis",
-                        //                   style: TextStyle(
-                        //                     color: Colors.white,
-                        //                   ),
-                        //                 ),
-                        //                 buttondetails: TextButton.icon(
-                        //                   onPressed: () {
-                        //                     Navigator.push(
-                        //                       context,
-                        //                       MaterialPageRoute(builder: (context) => const ServiceDetailsList()),
-                        //                     );
-                        //                   },
-                        //                   icon: const Text(
-                        //                     "More Details",
-                        //                     style: TextStyle(
-                        //                       color: Colors.white,
-                        //                     ),
-                        //                   ),
-                        //                   label: const Icon(
-                        //                     Icons.info_outline,
-                        //                     size: 30,
-                        //                     color: Colors.white,
-                        //                   ),
-                        //                 ),
-                        //                 clinicname: 'Ziedas',
-                        //                 treatmenttitle: 'Package Offer!',
-                        //                 treatmentprice: '300AED',
-                        //                 oldprice: '400AED',
-                        //                 treatmentType: 'Dec 28',
-                        //               ),
-                        //             ),
-                        //           ],
-                        //         ),
-                        //       ),
-                        //       Padding(
-                        //         padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
-                        //         child: Row(
-                        //           children: [
-                        //             Container(
-                        //               width: 100, // Set a consistent width
-                        //               height: 100, // Set a consistent height
-                        //               decoration: const BoxDecoration(
-                        //                 borderRadius: BorderRadius.all(
-                        //                   Radius.circular(10),
-                        //                 ),
-                        //                 image: DecorationImage(
-                        //                   image: AssetImage("assets/images/ziedas.jpg"),
-                        //                   fit: BoxFit.contain, // Ensure the whole image is showing
-                        //                   alignment: Alignment.center, // Center the image
-                        //                 ),
-                        //               ),
-                        //             ),
-                        //             Flexible(
-                        //               child: OffersList(
-                        //                 button: TextButton.icon(
-                        //                   onPressed:() async {
-                        // const url = "https://wa.me/+201003806255/?text=Hello";
-                        // final Uri uri = Uri.parse(url);
-                        // await launchUrl(uri);
-                        //   },
-                        //                   icon: const Text(
-                        //                     "Book Now",
-                        //                     style: TextStyle(
-                        //                       color: Colors.white,
-                        //                     ),
-                        //                   ),
-                        //                   label: const Icon(
-                        //                     Icons.arrow_forward_ios,
-                        //                     size: 30,
-                        //                     color: Colors.white,
-                        //                   ),
-                        //                 ),
-                        //                 textinfo: const Text(
-                        //                   "Free Hair Analysis",
-                        //                   style: TextStyle(
-                        //                     color: Colors.white,
-                        //                   ),
-                        //                 ),
-                        //                 buttondetails: TextButton.icon(
-                        //                   onPressed: () {
-                        //                     Navigator.push(
-                        //                       context,
-                        //                       MaterialPageRoute(builder: (context) => const ServiceDetailsList()),
-                        //                     );
-                        //                   },
-                        //                   icon: const Text(
-                        //                     "More Details",
-                        //                     style: TextStyle(
-                        //                       color: Colors.white,
-                        //                     ),
-                        //                   ),
-                        //                   label: const Icon(
-                        //                     Icons.info_outline,
-                        //                     size: 30,
-                        //                     color: Colors.white,
-                        //                   ),
-                        //                 ),
-                        //                 clinicname: 'Ziedas',
-                        //                 treatmenttitle: 'Package Offer!',
-                        //                 treatmentprice: '300AED',
-                        //                 oldprice: '400AED',
-                        //                 treatmentType: 'Dec 28',
-                        //               ),
-                        //             ),
-                        //           ],
-                        //         ),
-                        //       ),
-                        //       Padding(
-                        //         padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
-                        //         child: Row(
-                        //           children: [
-                        //             Container(
-                        //               width: 100, // Set a consistent width
-                        //               height: 100, // Set a consistent height
-                        //               decoration: const BoxDecoration(
-                        //                 borderRadius: BorderRadius.all(
-                        //                   Radius.circular(10),
-                        //                 ),
-                        //                 image: DecorationImage(
-                        //                   image: AssetImage("assets/images/ziedas.jpg"),
-                        //                   fit: BoxFit.contain, // Ensure the whole image is showing
-                        //                   alignment: Alignment.center, // Center the image
-                        //                 ),
-                        //               ),
-                        //             ),
-                        //             Flexible(
-                        //               child: OffersList(
-                        //                 button: TextButton.icon(
-                        //                   onPressed: () async {
-                        // const url = "https://wa.me/+201003806255/?text=Hello";
-                        // final Uri uri = Uri.parse(url);
-                        // await launchUrl(uri);
-                        //   },
-                        //                   icon: const Text(
-                        //                     "Book Now",
-                        //                     style: TextStyle(
-                        //                       color: Colors.white,
-                        //                     ),
-                        //                   ),
-                        //                   label: const Icon(
-                        //                     Icons.arrow_forward_ios,
-                        //                     size: 30,
-                        //                     color: Colors.white,
-                        //                   ),
-                        //                 ),
-                        //                 textinfo: const Text(
-                        //                   "Free Hair Analysis",
-                        //                   style: TextStyle(
-                        //                     color: Colors.white,
-                        //                   ),
-                        //                 ),
-                        //                 buttondetails: TextButton.icon(
-                        //                   onPressed: () {
-                        //                     Navigator.push(
-                        //                       context,
-                        //                       MaterialPageRoute(builder: (context) => const ServiceDetailsList()),
-                        //                     );
-                        //                   },
-                        //                   icon: const Text(
-                        //                     "More Details",
-                        //                     style: TextStyle(
-                        //                       color: Colors.white,
-                        //                     ),
-                        //                   ),
-                        //                   label: const Icon(
-                        //                     Icons.info_outline,
-                        //                     size: 30,
-                        //                     color: Colors.white,
-                        //                   ),
-                        //                 ),
-                        //                 clinicname: 'Ziedas',
-                        //                 treatmenttitle: 'Package Offer!',
-                        //                 treatmentprice: '300AED',
-                        //                 oldprice: '400AED',
-                        //                 treatmentType: 'Dec 28',
-                        //               ),
-                        //             ),
-                        //           ],
-                        //         ),
-                        //       ),
                             ],
                           ),
                         ),

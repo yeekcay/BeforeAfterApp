@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import '/screens/loginscreen.dart';
 
-void main() => runApp(const SplashScreen());
+// void main() => runApp(const SplashScreen());
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -36,7 +36,7 @@ class _SplashScreenState extends State<SplashScreen> {
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("assets/images/bg_animate.gif"),
+                image: AssetImage("./assets/images/bg_animate.gif"),
                 fit: BoxFit.cover,
               ),
             ),
@@ -51,8 +51,8 @@ class _SplashScreenState extends State<SplashScreen> {
                       child: Column(
                         children: [
                           Container(
-                            child: Image.network(
-                              'https://i.postimg.cc/9FXQmh8J/logoanimate.gif',
+                            child: Image.asset(
+                              "./assets/images/logoanimate.gif",
                               fit: BoxFit.contain,
                               width: MediaQuery.of(context).size.width * 0.9,
                               height: MediaQuery.of(context).size.height * 0.6,
@@ -68,7 +68,7 @@ class _SplashScreenState extends State<SplashScreen> {
                     margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                     padding: const EdgeInsets.only(bottom: 20), // Add bottom padding
                     child: Image.asset(
-                      "assets/images/maglev.png",
+                      "./assets/images/maglev.png",
                       fit: BoxFit.contain,
                       width: MediaQuery.of(context).size.width * 0.3,
                       height: MediaQuery.of(context).size.height * 0.1,
