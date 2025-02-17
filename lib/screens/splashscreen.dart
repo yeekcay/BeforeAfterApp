@@ -31,50 +31,65 @@ class _SplashScreenState extends State<SplashScreen> {
     return MaterialApp(
       debugShowCheckedModeBanner: false, // Remove the debug tag
       title: 'Before & After App',
-      home: Container(
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage("assets/images/bg_animate.gif"),
-            fit: BoxFit.cover,
-          ),
-        ),
-        child: Scaffold(
-          resizeToAvoidBottomInset: false,
-          backgroundColor: Colors.transparent,
-          body: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Expanded(
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      Container(
-                        child: Image.network(
-                          'https://i.postimg.cc/9FXQmh8J/logoanimate.gif',
-                          fit: BoxFit.contain,
-                          width: MediaQuery.of(context).size.width * 0.9,
-                          height: MediaQuery.of(context).size.height * 0.6,
-                        ),
+      home: Stack(
+        children: [
+          Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("assets/images/bg_animate.gif"),
+                fit: BoxFit.cover,
+              ),
+            ),
+            child: Scaffold(
+              resizeToAvoidBottomInset: false,
+              backgroundColor: Colors.transparent,
+              body: Column(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Expanded(
+                    child: SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          Container(
+                            child: Image.network(
+                              'https://i.postimg.cc/9FXQmh8J/logoanimate.gif',
+                              fit: BoxFit.contain,
+                              width: MediaQuery.of(context).size.width * 0.9,
+                              height: MediaQuery.of(context).size.height * 0.6,
+                            ),
+                          ),
+                          // Removed ElevatedButton
+                        ],
                       ),
-                      // Removed ElevatedButton
-                    ],
+                    ),
                   ),
-                ),
+                  Container(
+                    alignment: Alignment.center, // Move the image to the center
+                    margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                    padding: const EdgeInsets.only(bottom: 20), // Add bottom padding
+                    child: Image.asset(
+                      "assets/images/maglev.png",
+                      fit: BoxFit.contain,
+                      width: MediaQuery.of(context).size.width * 0.3,
+                      height: MediaQuery.of(context).size.height * 0.1,
+                    ),
+                  ),
+                ],
               ),
-              Container(
-                alignment: Alignment.center, // Move the image to the center
-                margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                padding: const EdgeInsets.only(bottom: 20), // Add bottom padding
-                child: Image.asset(
-                  "assets/images/maglev.png",
-                  fit: BoxFit.contain,
-                  width: MediaQuery.of(context).size.width * 0.3,
-                  height: MediaQuery.of(context).size.height * 0.1,
-                ),
-              ),
-            ],
+            ),
           ),
-        ),
+          const Positioned(
+            bottom: 10,
+            left: 10,
+            child: Text(
+              "Ver1.0",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 12,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

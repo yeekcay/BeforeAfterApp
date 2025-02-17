@@ -78,7 +78,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 fontSize: 20,
                 fontWeight: FontWeight.bold),
 ),
-          child: Text('Sign in/Sign up'),
+          child: const Text('Sign in/Sign up'),
 
           //  BorderSide side,
           //  OutlinedBorder shape,
