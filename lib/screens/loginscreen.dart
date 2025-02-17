@@ -1,22 +1,19 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import '/utils/animations.dart';
-
-import '../data/bg_data.dart';
+import '/screens/homescreen.dart';
 import '../utils/text_utils.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 final Uri _url = Uri.parse('https://flutter.dev');
 
-void main(){
+void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
-      .then((_) {
-    runApp( const MyApp());
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then((_) {
+    runApp(const MyApp());
   });
 }
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -28,6 +25,7 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
@@ -36,12 +34,13 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  int selectedIndex=0;
-  bool showOption=false;
+  int selectedIndex = 0;
+  bool showOption = false;
+  bool rememberMe = false;
+
   @override
   Widget build(BuildContext context) {
     return PopScope(
-      
       canPop: false,
       onPopInvoked: (didPop) async {
         if (didPop) {
@@ -53,243 +52,173 @@ class _LoginScreenState extends State<LoginScreen> {
           navigator.pop();
         }
       },
-
-
-
-
-
-    child: Scaffold(
-      floatingActionButton: Container(
-        margin:
-        // const  EdgeInsets.symmetric(vertical: 10,),
-        const EdgeInsets.only(
-      left: 20,
-      // top: 10,
-      // right: 30,
-      bottom: 660,
-    ),
-        height: 145,
-        width: double.infinity,
-        alignment: Alignment.bottomCenter,
-        
-        child: Row(
-          
-          children: [
-            Expanded(
-
-              child:  Image.asset("assets/images/logoanimate.gif",
-              // Can add other properties on how you would like the anim to display
-               alignment: Alignment.bottomCenter,
-              fit: BoxFit.contain,
-              width: 400,
-              height: 400,
-            ),
-            ),
-        //         child:showOption? ShowUpAnimation(
-        //           delay: 100,
-        //           child: ListView.builder(
-        //             shrinkWrap: true,
-        //               itemCount: bgList.length,
-        //               scrollDirection: Axis.horizontal,
-        //               itemBuilder: (context,index){
-        //            return   GestureDetector(
-        //              onTap: (){
-        //                setState(() {
-        //                  selectedIndex=index;
-        //                });
-        //              },
-        //              child: CircleAvatar(
-        //                radius: 30,
-
-        //                backgroundColor:selectedIndex==index? Colors.white:Colors.transparent,
-        //                child: Padding(
-        //                  padding:const  EdgeInsets.all(1),
-        //                  child: CircleAvatar(
-        //                    radius: 30,
-        //                    backgroundImage: AssetImage("assets/images/bg_animate.gif"),
-        //                  ),
-        //                ),
-        //              ),
-        //            );
-
-        //           }),
-        //         ):const SizedBox()),
-        //    const  SizedBox(width: 20,),
-        //    showOption? GestureDetector(
-        //      onTap: (){
-        //        setState(() {
-        //          showOption=false;
-        //        });
-        //      },
-        //        child:const  Icon(Icons.close,color: Colors.white,size: 30,)) :
-        //    GestureDetector(
-        //      onTap: (){
-        //        setState(() {
-        //          showOption=true;
-        //        });
-        //      },
-        //      child: CircleAvatar(
-
-        //         backgroundColor: Colors.white,
-        //         child: Padding(
-        //           padding:const  EdgeInsets.all(1),
-        //           child: CircleAvatar(
-        //             radius: 30,
-        //             backgroundImage: AssetImage("assets/images/bg_animate.gif"),
-        //      ),
-        //         ),
-        //       ),
-        //    )
-        //   ],
-        // ),
-          ],
-      ),
-      ),
-      body: Container(
+      child: Scaffold(
+        body: Container(
           height: double.infinity,
           width: double.infinity,
-        decoration:  const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage("assets/images/bg_animate.gif"),fit: BoxFit.cover
-          ),
-
-        ),
-    alignment: Alignment.center,
-    child: Container(
-      height: 400,
-      width: double.infinity,
-        margin: const EdgeInsets.symmetric(horizontal: 30),
-      decoration: BoxDecoration(
-        border: Border.all(color: Colors.white),
-        borderRadius: BorderRadius.circular(15),
-        color: Colors.black.withOpacity(0.1),
-
-
-        ),
-      child: ClipRRect(
-
-        borderRadius: BorderRadius.circular(20),
-        child: BackdropFilter(filter:ImageFilter.blur(sigmaY: 5,sigmaX: 5),
-    child:Padding(
-      padding: const EdgeInsets.all(25),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const   Spacer(),
-          Center(child: TextUtil(text: "Login",weight: true,size: 30,)),
-          const   Spacer(),
-          TextUtil(text: "Email",),
-          Container(
-            height: 35,
-            decoration:const  BoxDecoration(
-              border: Border(bottom: BorderSide(color: Colors.white))
-            ),
-            child:TextFormField(
-              style: const TextStyle(color: Colors.white),
-              decoration:const  InputDecoration(
-                suffixIcon: Icon(Icons.mail,color: Colors.white,),
-               fillColor: Colors.white,
-                border: InputBorder.none,),
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/images/bg_splash2.png"),
+              fit: BoxFit.cover,
             ),
           ),
-          const   Spacer(),
-            TextUtil(text: "Phone",),
-          Container(
-            height: 35,
-            decoration:const  BoxDecoration(
-              border: Border(bottom: BorderSide(color: Colors.white))
+          alignment: Alignment.center,
+          child: Container(
+            constraints: BoxConstraints(
+              maxHeight: MediaQuery.of(context).size.height * 0.8,
+              maxWidth: MediaQuery.of(context).size.width * 0.9,
             ),
-            child:TextFormField(
-              style: const TextStyle(color: Colors.white),
-              decoration:const  InputDecoration(
-                suffixIcon: Icon(Icons.phone,color: Colors.white,),
-               fillColor: Colors.white,
-                border: InputBorder.none,),
+            margin: const EdgeInsets.symmetric(horizontal: 30),
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.white),
+              borderRadius: BorderRadius.circular(15),
+              color: Colors.black.withOpacity(0.1),
             ),
-          ),
-          const   Spacer(),
-          TextUtil(text: "Password",),
-          Container(
-            height: 35,
-            decoration:const  BoxDecoration(
-                border: Border(bottom: BorderSide(color: Colors.white))
-            ),
-            child:TextFormField(
-            obscureText: true, 
-              style: const TextStyle(color: Colors.white),
-              decoration:const  InputDecoration(
-                suffixIcon: Icon(Icons.lock,color: Colors.white,),
-                fillColor: Colors.white,
-                border: InputBorder.none,),
-            ),
-          ),
-          const   Spacer(flex: 5),
-          Row(
-            children: [
-              Container(
-                height: 15,
-                width: 15,
-                color: Colors.white,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: Stack(
+                children: [
+                  BackdropFilter(
+                    filter: ImageFilter.blur(sigmaX: 2, sigmaY: 2),
+                    child: Container(
+                      color: Colors.black.withOpacity(0.3),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(25),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Spacer(),
+                        Center(child: TextUtil(text: "Login", weight: true, size: 30)),
+                        const Spacer(),
+                        TextUtil(text: "Email"),
+                        Container(
+                          height: 35,
+                          decoration: const BoxDecoration(
+                            border: Border(bottom: BorderSide(color: Colors.white)),
+                          ),
+                          child: TextFormField(
+                            style: const TextStyle(color: Colors.white),
+                            decoration: const InputDecoration(
+                              suffixIcon: Icon(Icons.mail, color: Colors.white),
+                              fillColor: Colors.white,
+                              border: InputBorder.none,
+                            ),
+                          ),
+                        ),
+                        const Spacer(),
+                        TextUtil(text: "Phone"),
+                        Container(
+                          height: 35,
+                          decoration: const BoxDecoration(
+                            border: Border(bottom: BorderSide(color: Colors.white)),
+                          ),
+                          child: TextFormField(
+                            style: const TextStyle(color: Colors.white),
+                            decoration: const InputDecoration(
+                              suffixIcon: Icon(Icons.phone, color: Colors.white),
+                              fillColor: Colors.white,
+                              border: InputBorder.none,
+                            ),
+                          ),
+                        ),
+                        const Spacer(),
+                        TextUtil(text: "Password"),
+                        Container(
+                          height: 35,
+                          decoration: const BoxDecoration(
+                            border: Border(bottom: BorderSide(color: Colors.white)),
+                          ),
+                          child: TextFormField(
+                            obscureText: true,
+                            style: const TextStyle(color: Colors.white),
+                            decoration: const InputDecoration(
+                              suffixIcon: Icon(Icons.lock, color: Colors.white),
+                              fillColor: Colors.white,
+                              border: InputBorder.none,
+                            ),
+                          ),
+                        ),
+                        const Spacer(flex: 5),
+                        Row(
+                          children: [
+                            Checkbox(
+                              value: rememberMe,
+                              onChanged: (bool? value) {
+                                setState(() {
+                                  rememberMe = value ?? false;
+                                });
+                              },
+                              activeColor: Colors.white,
+                              checkColor: Colors.black,
+                              fillColor: WidgetStateProperty.resolveWith<Color>((Set<WidgetState> states) {
+                                if (!states.contains(WidgetState.selected)) {
+                                  return Colors.grey; // Background color when not checked
+                                }
+                                return Colors.white; // Background color when checked
+                              }),
+                            ),
+                            Expanded(child: TextUtil(text: "Remember Me", size: 12, weight: true)),
+                          ],
+                        ),
+                        const Spacer(flex: 5),
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => const homescreen()),
+                            );
+                          },
+                          child: Container(
+                            height: 40,
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(30),
+                            ),
+                            alignment: Alignment.center,
+                            child: TextUtil(text: "Log In", color: Colors.black),
+                          ),
+                        ),
+                        const Spacer(flex: 2), // Reduced space
+                        Container(
+                          height: 40,
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                          alignment: Alignment.center,
+                          child: TextUtil(text: "Register", color: Colors.black),
+                        ),
+                        const Spacer(flex: 5),
+                        Center(
+                          child: InkWell(
+                            onTap: _launchUrl,
+                            child: TextUtil(text: "Forgot your Password?", size: 12, weight: true),
+                          ),
+                        ),
+                        const Spacer(),
+                      ],
+                    ),
+                  ),
+                ],
               ),
-             const  SizedBox(width: 10,),
-              Expanded(child: TextUtil(text: "Remember Me",size: 12,weight: true,))
-            ],
-          ), const   Spacer(flex: 5),
-          Container(
-            height: 40,
-            width: double.infinity,
-            decoration:  BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(30)
             ),
-            alignment: Alignment.center,
-            child: TextUtil(text: "Log In",color: Colors.black,),
           ),
-       const   Spacer(flex: 7),
-        Container(
-            height: 40,
-            width: double.infinity,
-            decoration:  BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(30)
-            ),
-            alignment: Alignment.center,
-            child: TextUtil(text: "Register",color: Colors.black,),
-          ),
-           const   Spacer(flex: 5),
-          Center(
-            child: InkWell(
-             child: TextUtil(text: "Forgot your Password?",size: 12,weight: true,),
-             onTap:  _launchUrl,
-             ),
-          ),
-          const   Spacer(),
-
-
-        ],
+        ),
       ),
-    ) ),
-      ),
-      ),
-
-
-    ),
-
-
-
-       ),
     );
   }
-  }
-   Future<bool?> _showBackDialog(BuildContext context) {
+
+  Future<bool?> _showBackDialog(BuildContext context) {
     return showDialog<bool>(
       context: context,
       builder: (context) {
         return AlertDialog(
           title: const Text("Exit"),
-          content: const Text(
-            "Are you sure?",
-          ),
+          content: const Text("Are you sure?"),
           actions: <Widget>[
             TextButton(
               onPressed: () {
@@ -299,7 +228,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             TextButton(
               onPressed: () {
-                 SystemNavigator.pop();
+                SystemNavigator.pop();
               },
               child: const Text("Yes"),
             ),
@@ -309,8 +238,9 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-Future<void> _launchUrl() async {
-  if (!await launchUrl(_url)) {
-    throw Exception('Could not launch $_url');
+  Future<void> _launchUrl() async {
+    if (!await launchUrl(_url)) {
+      throw Exception('Could not launch $_url');
+    }
   }
 }
